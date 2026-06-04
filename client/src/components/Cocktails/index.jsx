@@ -10,7 +10,8 @@ function Cocktails() {
   }, []);
 
   return (
-    <>
+    <div>
+      <h2 className='title'>All Cocktails</h2>
       <div className='container'>
         {drinks.map(drink => (
           <div className='card' key={drink.id}>
@@ -36,7 +37,7 @@ function Cocktails() {
           </div>
       ))}
       </div>
-    </>
+    </div>
   );
 }
 
