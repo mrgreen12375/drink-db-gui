@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Nav from './components/Nav';
-import Landing from './components/Landing';
-import CocktailsAll from './components/Cocktails';
+import LandingPage from './components/LandingPage';
+import Cocktails from './components/Cocktails';
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
       <Nav />
 
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/get" element={<CocktailsAll />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/get" element={<Cocktails />} />
         {/* <Route path="/post" element={<CreateCocktail />} />
         <Route path="/put" element={<UpdateCocktail />} />
         <Route path="/delete" element={<DeleteCocktail />} /> */}
