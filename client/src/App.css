@@ -130,3 +130,46 @@ nav a {
   background-color: black;
   color: white;
 }
+
+.createContainer {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.createContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.createContainer input,
+.createContainer textarea {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.ingredientRow {
+  display: flex;
+  gap: 10px;
+}
+
+.ingredientRow input {
+  flex: 1;
+}
+
+.createContainer button {
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: green;
+  font-weight: bold;
+}
+
+.createContainer button:hover {
+  background-color: rgb(3, 181, 3);
+}
