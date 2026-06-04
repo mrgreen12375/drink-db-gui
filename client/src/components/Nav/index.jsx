@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function Nav() {
 
 	return (
         <nav>
             <ul>
-            <li><a id='getButton' href="/get">GET</a></li>
-            <li><a id='postButton' href="/post">POST</a></li>
-            <li><a id='putButton' href="/put">PUT</a></li>
-            <li><a id='deleteButton' href="/delete">DELETE</a></li>
+            <li><Link id="getButton" to="/get">GET</Link></li>
+            <li><Link id="postButton" to="/post">POST</Link></li>
+            <li><Link id="putButton" to="/put">PUT</Link></li>
+            <li><Link id="deleteButton" to="/delete">DELETE</Link></li>
             </ul>
         </nav>
 	);
