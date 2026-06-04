@@ -166,9 +166,9 @@ function CreateCocktail() {
                     if (!ingredient) return null;
 
                     return (
-                        <p key={i}>
+                        <h5 key={i}>
                         {measurement} : {ingredient}
-                        </p>
+                        </h5>
                     );
                     })}
 
