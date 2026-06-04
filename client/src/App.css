@@ -136,9 +136,20 @@ nav a {
   color: white;
 }
 
+.createdDrink {
+  color: black;
+}
+
 .createContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.createContainerForm {
   max-width: 600px;
-  margin: 30px auto;
+  margin: 30px;
   padding: 20px;
   color: black;
   border: 1px solid black;
