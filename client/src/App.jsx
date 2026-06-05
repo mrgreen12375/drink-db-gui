@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 import LandingPage from './components/LandingPage';
 import Cocktails from './components/Cocktails';
 import CreateCocktail from './components/CreateCocktail';
+import UpdateCocktail from './components/UpdateCocktail';
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/get" element={<Cocktails />} />
         <Route path="/post" element={<CreateCocktail />} />
-        {/* <Route path="/put" element={<UpdateCocktail />} />
-        <Route path="/delete" element={<DeleteCocktail />} /> */}
+        <Route path="/put" element={<UpdateCocktail />} />
+        {/* <Route path="/delete" element={<DeleteCocktail />} /> */}
       </Routes>
     </BrowserRouter>
   );

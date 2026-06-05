@@ -203,3 +203,25 @@ nav a {
 .createContainer button:hover {
   background-color: rgb(3, 181, 3);
 }
+
+.idRow {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 0px;
+}
+
+.update button {
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: orange;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.update button:hover {
+  background-color: rgb(255, 192, 74);
+}

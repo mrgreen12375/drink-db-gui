@@ -109,23 +109,29 @@ router.post('/', (req, res) => {
 });
 
 // update a cocktail
-router.put('/:id', (req, res) => {
-  Cocktail.update(req.body, {
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(drinkData => {
-      if (!drinkData[0]) {
-        res.status(404).json({ message: 'No cocktail found with this id' });
-        return;
-      }
-      res.json(drinkData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+router.put('/:id', async (req, res) => {
+  try {
+    const drinkData = await Cocktail.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
     });
+
+    if (!drinkData[0]) {
+      return res.status(404).json({
+        message: 'No cocktail found with this id',
+      });
+    }
+
+    const updatedCocktail = await Cocktail.findByPk(
+      req.params.id
+    );
+
+    res.json(updatedCocktail);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 // delete a cocktail
