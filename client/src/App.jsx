@@ -7,6 +7,7 @@ import LandingPage from './components/LandingPage';
 import Cocktails from './components/Cocktails';
 import CreateCocktail from './components/CreateCocktail';
 import UpdateCocktail from './components/UpdateCocktail';
+import DeleteCocktail from './components/DeleteCocktail';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/get" element={<Cocktails />} />
         <Route path="/post" element={<CreateCocktail />} />
         <Route path="/put" element={<UpdateCocktail />} />
-        {/* <Route path="/delete" element={<DeleteCocktail />} /> */}
+        <Route path="/delete" element={<DeleteCocktail />} />
       </Routes>
     </BrowserRouter>
   );
