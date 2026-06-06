@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Nav from './components/Nav';
+import GetNav from './components/GetNav';
+import UpdateNav from './components/UpdateNav';
+import DeleteNav from './components/DeleteNav';
 import LandingPage from './components/LandingPage';
 import Cocktails from './components/Cocktails';
 import CreateCocktail from './components/CreateCocktail';
@@ -17,10 +20,13 @@ function App() {
 
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/get" element={<Cocktails />} />
+        <Route path="/get" element={<GetNav />} />
+        <Route path="/put" element={<UpdateNav />} />
+        <Route path="/get/all" element={<Cocktails />} />
         <Route path="/post" element={<CreateCocktail />} />
-        <Route path="/put" element={<UpdateCocktail />} />
-        <Route path="/delete" element={<DeleteCocktail />} />
+        <Route path="/put/id" element={<UpdateCocktail />} />
+        <Route path="/delete" element={<DeleteNav />} />
+        <Route path="/delete/id" element={<DeleteCocktail />} />
       </Routes>
     </BrowserRouter>
   );

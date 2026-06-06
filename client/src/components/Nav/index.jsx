@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Nav() {
 
 	return (
-        <nav>
+        <nav className="mainNav">
             <ul>
             <li><Link id="getButton" to="/get">GET</Link></li>
             <li><Link id="postButton" to="/post">POST</Link></li>
