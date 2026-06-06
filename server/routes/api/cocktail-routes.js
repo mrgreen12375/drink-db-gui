@@ -135,23 +135,30 @@ router.put('/:id', async (req, res) => {
 });
 
 // delete a cocktail
-router.delete('/:id', (req, res) => {
-  Cocktail.destroy({
-    where: {
-      id: req.params.id
+router.delete('/:id', async (req, res) => {
+  try {
+    const cocktail = await Cocktail.findByPk(req.params.id);
+
+    if (!cocktail) {
+      return res.status(404).json({ message: 'No cocktail found with this id' });
     }
-  })
-    .then(drinkData => {
-      if (!drinkData) {
-        res.status(404).json({ message: 'No cocktail found with this id' });
-        return;
+
+    const drinkName = cocktail.drinkName;
+
+    await Cocktail.destroy({
+      where: {
+        id: req.params.id
       }
-      res.json(drinkData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
     });
+
+    res.json({
+      drinkName
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

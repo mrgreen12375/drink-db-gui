@@ -6,17 +6,19 @@ function DeleteCocktail() {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch(`/api/cocktails/${id}`, {
         method: 'DELETE',
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to delete cocktail');
       }
-
-      setMessage(`Cocktail ${id} deleted successfully`);
+  
+      const data = await response.json();
+  
+      setMessage(`${data.drinkName} deleted successfully`);
       setId('');
     } catch (err) {
       console.error(err);
