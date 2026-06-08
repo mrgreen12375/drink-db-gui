@@ -242,6 +242,16 @@ header p {
   padding: 10px 0px;
 }
 
+.get button {
+  color: white;
+  background-color: blue;
+  border-radius: 5px;
+}
+
+.get button:hover {
+  background-color: rgb(31, 101, 254);
+}
+
 .update button {
   padding: 10px;
   cursor: pointer;

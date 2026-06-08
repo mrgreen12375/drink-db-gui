@@ -28,7 +28,7 @@ function DeleteCocktail() {
 
   return (
     <div className="createContainer">
-        <div className="deleteDrink">
+        <div className="createdDrink">
         <h2>Delete a Cocktail</h2>
 
         <div className="createContainerForm delete">
