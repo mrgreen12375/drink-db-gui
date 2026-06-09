@@ -9,6 +9,7 @@ import DeleteNav from './components/DeleteNav';
 import LandingPage from './components/LandingPage';
 import Cocktails from './components/Cocktails';
 import CocktailById from './components/CocktailById';
+import CocktailByName from './components/CocktailByName';
 import CreateCocktail from './components/CreateCocktail';
 import UpdateCocktail from './components/UpdateCocktail';
 import DeleteCocktail from './components/DeleteCocktail';
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/get" element={<GetNav />} />
         <Route path="/get/id" element={<CocktailById />} />
+        <Route path="/get/name" element={<CocktailByName />} />
         <Route path="/put" element={<UpdateNav />} />
         <Route path="/get/all" element={<Cocktails />} />
         <Route path="/post" element={<CreateCocktail />} />

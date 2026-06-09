@@ -34,26 +34,27 @@ router.get('/:id', (req, res) => {
 });
 
 // get cocktail by drink name
-router.get('/name/:drinkName', (req, res) => {
-  Cocktail.findOne({
-    where: {
-      drinkName: {
-        [Op.iLike]: req.params.drinkName
+router.get('/name/:drinkName', async (req, res) => {
+  try {
+    const drinkData = await Cocktail.findOne({
+      where: {
+        drinkName: {
+          [Op.iLike]: req.params.drinkName
+        }
       }
-    }
-  })
-    .then(drinkData => {
-      if (!drinkData) {
-        res.status(404).json({ message: 'No cocktail found with this name' });
-        return;
-      }
-
-      res.json(drinkData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
     });
+
+    if (!drinkData) {
+      return res.status(404).json({
+        message: 'No cocktail found with this name'
+      });
+    }
+
+    res.json(drinkData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
 // get cocktail by alcohol name
