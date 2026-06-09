@@ -135,6 +135,32 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// update a cocktail by drink name
+router.put('/name/:drinkName', async (req, res) => {
+  try {
+    const cocktail = await Cocktail.findOne({
+      where: {
+        drinkName: {
+          [Op.iLike]: req.params.drinkName,
+        },
+      },
+    });
+
+    if (!cocktail) {
+      return res.status(404).json({
+        message: 'No cocktail found with this name',
+      });
+    }
+
+    await cocktail.update(req.body);
+
+    res.json(cocktail);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // delete a cocktail
 router.delete('/:id', async (req, res) => {
   try {
@@ -156,6 +182,35 @@ router.delete('/:id', async (req, res) => {
       drinkName
     });
 
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.delete('/name/:drinkName', async (req, res) => {
+  try {
+    const cocktail = await Cocktail.findOne({
+      where: {
+        drinkName: {
+          [Op.iLike]: req.params.drinkName,
+        },
+      },
+    });
+
+    if (!cocktail) {
+      return res.status(404).json({
+        message: 'No cocktail found with this name',
+      });
+    }
+
+    const drinkName = cocktail.drinkName;
+
+    await cocktail.destroy();
+
+    res.json({
+      drinkName,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -13,7 +13,9 @@ import CocktailByName from './components/CocktailByName';
 import CocktailsByAlcohol from './components/CocktailsByAlcohol';
 import CreateCocktail from './components/CreateCocktail';
 import UpdateCocktail from './components/UpdateCocktail';
+import UpdateCocktailByName from './components/UpdateCocktailByName';
 import DeleteCocktail from './components/DeleteCocktail';
+import DeleteCocktailByName from './components/DeleteCocktailByName';
 
 function App() {
   return (
@@ -24,15 +26,17 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/get" element={<GetNav />} />
+        <Route path="/get/all" element={<Cocktails />} />
         <Route path="/get/id" element={<CocktailById />} />
         <Route path="/get/name" element={<CocktailByName />} />
         <Route path="/get/alcohol" element={<CocktailsByAlcohol />} />
-        <Route path="/put" element={<UpdateNav />} />
-        <Route path="/get/all" element={<Cocktails />} />
         <Route path="/post" element={<CreateCocktail />} />
+        <Route path="/put" element={<UpdateNav />} />
         <Route path="/put/id" element={<UpdateCocktail />} />
+        <Route path="/put/name" element={<UpdateCocktailByName />} />
         <Route path="/delete" element={<DeleteNav />} />
         <Route path="/delete/id" element={<DeleteCocktail />} />
+        <Route path="/delete/name" element={<DeleteCocktailByName />} />
       </Routes>
     </BrowserRouter>
   );
