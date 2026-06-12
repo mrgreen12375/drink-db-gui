@@ -1,5 +1,10 @@
 import { useState } from 'react';
 
+import {
+  StyledDeleteSection,
+  StyledDeleteForm
+} from './style';
+
 function DeleteCocktailByName() {
   const [drinkName, setDrinkName] = useState('');
   const [message, setMessage] = useState('');
@@ -33,13 +38,12 @@ function DeleteCocktailByName() {
   };
 
   return (
-    <div className="createContainer">
-      <div className="createdDrink">
+    <StyledDeleteSection>
+      <div>
         <h2>Delete a Cocktail</h2>
-
-        <div className="createContainerForm delete">
+        <StyledDeleteForm>
           <form onSubmit={handleDelete}>
-            <div className="deleteIdRow">
+            <div>
               <input
                 type="text"
                 value={drinkName}
@@ -55,15 +59,15 @@ function DeleteCocktailByName() {
               </button>
             </div>
           </form>
-        </div>
+        </StyledDeleteForm>
 
         {message && (
-          <div className="deleteMessage">
+          <div>
             <p>{message}</p>
           </div>
         )}
       </div>
-    </div>
+    </StyledDeleteSection>
   );
 }
 
