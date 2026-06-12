@@ -3,21 +3,25 @@ import { Link } from 'react-router-dom';
 
 import landingImage from '../../assets/landing.png';
 
+import {
+    StyledUpdateNavContainer
+} from './style';
+
 function UpdateNav() {
 
 	return (
-        <div>
-            <nav className="secondaryNav">
+        <StyledUpdateNavContainer>
+            <nav>
                 <ul>
-                    <li><Link id="putButton" to="/put/id">ID</Link></li>
-                    <li><Link id="putButton" to="/put/name">Name</Link></li>
+                    <li><Link to="/put/id">ID</Link></li>
+                    <li><Link to="/put/name">Name</Link></li>
                 </ul>
             </nav>
             
             <div>
-                <img className="landing" src={landingImage} alt="Landing" />
+                <img src={landingImage} alt="Landing" />
             </div>
-        </div>
+        </StyledUpdateNavContainer>
 	);
 }
 
