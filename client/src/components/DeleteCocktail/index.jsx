@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import {
-  StyledDeleteSection,
+  StyledDeleteContainer,
   StyledDeleteForm
 } from './style';
 
@@ -32,8 +32,7 @@ function DeleteCocktail() {
   };
 
   return (
-      <StyledDeleteSection> 
-        <div>
+      <StyledDeleteContainer> 
           <h2>Delete a Cocktail</h2>
             <StyledDeleteForm>
               <form onSubmit={handleDelete}>
@@ -59,8 +58,7 @@ function DeleteCocktail() {
                 <p>{message}</p>
             </div>
         )}
-        </div>
-      </StyledDeleteSection>
+      </StyledDeleteContainer>
   );
 }
 

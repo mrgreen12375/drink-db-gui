@@ -1,5 +1,11 @@
 import { useState } from 'react';
 
+import {
+  StyledCocktailContainer,
+  StyledCocktailForm,
+  StyledCocktailCard
+} from './style';
+
 function CocktailById() {
   const [id, setId] = useState('');
   const [cocktail, setCocktail] = useState(null);
@@ -28,13 +34,11 @@ function CocktailById() {
   };
 
   return (
-    <div className="createContainer">
-      <div className="createdDrink">
+    <StyledCocktailContainer>
         <h2>Find a Cocktail</h2>
-
-        <div className="createContainerForm get">
+        <StyledCocktailForm>
           <form onSubmit={handleSearch}>
-            <div className="deleteIdRow">
+            <div>
               <input
                 type="number"
                 id="id"
@@ -49,54 +53,42 @@ function CocktailById() {
               </button>
             </div>
           </form>
-        </div>
+        </StyledCocktailForm>
 
         {message && (
-          <div className="deleteMessage">
+          <div>
             <p>{message}</p>
           </div>
         )}
 
-{cocktail && (
-  <div className="container">
-    <div className="card">
-      <h3>ID: {cocktail.id}</h3>
+        {cocktail && (
+            <StyledCocktailCard>
+              <h3>ID: {cocktail.id}</h3>
+              <div>
+                <h4>{cocktail.drinkName}</h4>
+                <img src={cocktail.drinkImage} alt={cocktail.drinkName}/>
+                <p>{cocktail.drinkInstructions}</p>
 
-      <div className="cardInfo">
-        <h4>{cocktail.drinkName}</h4>
+                {Array.from({ length: 15 }, (_, i) => {
+                  const ingredient = cocktail[`drinkIngredient${i + 1}`];
+                  const measurement = cocktail[`drinkMeasurement${i + 1}`];
 
-        <img
-          className="drinkImage"
-          src={cocktail.drinkImage}
-          alt={cocktail.drinkName}
-        />
+                  if (!ingredient) return null;
 
-        <p>{cocktail.drinkInstructions}</p>
+                  return (
+                    <h5 key={i}>
+                      {measurement} : {ingredient}
+                    </h5>
+                  );
+                })}
 
-        {Array.from({ length: 15 }, (_, i) => {
-          const ingredient = cocktail[`drinkIngredient${i + 1}`];
-          const measurement = cocktail[`drinkMeasurement${i + 1}`];
-
-          if (!ingredient) return null;
-
-          return (
-            <h5 key={i}>
-              {measurement} : {ingredient}
-            </h5>
-          );
-        })}
-
-        {cocktail.drinkVideo && (
-          <a href={cocktail.drinkVideo} target="_blank" rel="noreferrer">
-            Video
-          </a>
+                <a href={cocktail.drinkVideo} target="_blank" rel="noreferrer">
+                  Video
+                </a>
+              </div>
+            </StyledCocktailCard>
         )}
-      </div>
-    </div>
-  </div>
-)}
-      </div>
-    </div>
+    </StyledCocktailContainer>
   );
 }
 

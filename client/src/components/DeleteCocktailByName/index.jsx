@@ -39,7 +39,6 @@ function DeleteCocktailByName() {
 
   return (
     <StyledDeleteSection>
-      <div>
         <h2>Delete a Cocktail</h2>
         <StyledDeleteForm>
           <form onSubmit={handleDelete}>
@@ -66,7 +65,6 @@ function DeleteCocktailByName() {
             <p>{message}</p>
           </div>
         )}
-      </div>
     </StyledDeleteSection>
   );
 }

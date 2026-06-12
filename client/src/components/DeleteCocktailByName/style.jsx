@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledDeleteSection = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: black;

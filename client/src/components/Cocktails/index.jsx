@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
 
+import {
+  StyledContainer,
+  StyledCocktailContainer,
+  StyledCocktailCard
+} from './style';
+
 function Cocktails() {
   const [drinks, setDrinks] = useState([]);
 
@@ -10,15 +16,15 @@ function Cocktails() {
   }, []);
 
   return (
-    <div>
-      <h2 className='title'>All Cocktails</h2>
-      <div className='container'>
+    <StyledContainer>
+      <h2>All Cocktails</h2>
+      <StyledCocktailContainer>
         {drinks.map(drink => (
-          <div className='card' key={drink.id}>
+          <StyledCocktailCard key={drink.id}>
             <h3>ID: {drink.id}</h3>
-            <div className='cardInfo'>
+            <div>
               <h4>{drink.drinkName}</h4>
-              <img className='drinkImage' src={drink.drinkImage} alt={drink.drinkImage} />
+              <img src={drink.drinkImage} alt={drink.drinkImage} />
               <p>{drink.drinkInstructions}</p>
 
               {Array.from({ length: 15 }, (_, i) => {
@@ -34,10 +40,10 @@ function Cocktails() {
 
               <a href= {drink.drinkVideo} target='blank'>Video</a>
             </div>
-          </div>
+          </StyledCocktailCard>
       ))}
-      </div>
-    </div>
+      </StyledCocktailContainer>
+    </StyledContainer>
   );
 }
 

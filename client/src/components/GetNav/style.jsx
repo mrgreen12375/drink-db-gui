@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledGetNavContainer = styled.section`
+export const StyledGetNavContainer = styled.div`
   margin-top: 10px;
 
   ul {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledDeleteNavContainer = styled.section`
+export const StyledDeleteNavContainer = styled.div`
   margin-top: 10px;
 
   ul {
