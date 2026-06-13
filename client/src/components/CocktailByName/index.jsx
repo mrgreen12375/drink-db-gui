@@ -1,5 +1,11 @@
 import { useState } from 'react';
 
+import {
+  StyledCocktailContainer,
+  StyledCocktailForm,
+  StyledCocktailCard
+} from './style';
+
 function CocktailByName() {
   const [name, setName] = useState('');
   const [cocktail, setCocktail] = useState(null);
@@ -30,11 +36,9 @@ function CocktailByName() {
   };
 
   return (
-    <div className="createContainer">
-      <div className="createdDrink">
+    <StyledCocktailContainer>
         <h2>Find a Cocktail</h2>
-
-        <div className="createContainerForm get">
+        <StyledCocktailForm>
           <form onSubmit={handleSearch}>
             <div className="deleteIdRow">
               <input
@@ -51,24 +55,21 @@ function CocktailByName() {
               </button>
             </div>
           </form>
-        </div>
+        </StyledCocktailForm>
 
         {message && (
-          <div className="deleteMessage">
+          <div>
             <p>{message}</p>
           </div>
         )}
 
         {cocktail && (
-          <div className="container">
-            <div className="card">
+            <StyledCocktailCard>
               <h3>ID: {cocktail.id}</h3>
-
-              <div className="cardInfo">
+              <div>
                 <h4>{cocktail.drinkName}</h4>
 
                 <img
-                  className="drinkImage"
                   src={cocktail.drinkImage}
                   alt={cocktail.drinkName}
                 />
@@ -90,7 +91,6 @@ function CocktailByName() {
                   );
                 })}
 
-                {cocktail.drinkVideo && (
                   <a
                     href={cocktail.drinkVideo}
                     target="_blank"
@@ -98,13 +98,10 @@ function CocktailByName() {
                   >
                     Video
                   </a>
-                )}
               </div>
-            </div>
-          </div>
+            </StyledCocktailCard>
         )}
-      </div>
-    </div>
+    </StyledCocktailContainer>
   );
 }
 

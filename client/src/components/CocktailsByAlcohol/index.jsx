@@ -1,5 +1,12 @@
 import { useState } from 'react';
 
+import {
+  StyledCocktailContainer,
+  StyledCocktailForm,
+  StyledCocktailCardContainer,
+  StyledCocktailCard
+} from './style';
+
 function CocktailsByAlcohol() {
   const [alcohol, setAlcohol] = useState('');
   const [cocktails, setCocktails] = useState([]);
@@ -30,47 +37,43 @@ function CocktailsByAlcohol() {
   };
 
   return (
-    <div className="createContainer">
-        <div className="createdDrink">
-            <h2>Find Cocktails</h2>
+    <StyledCocktailContainer>
+        <h2>Find Cocktails</h2>
+        <StyledCocktailForm>
+          <form onSubmit={handleSearch}>
+              <div className="deleteIdRow">
+              <input
+                  type="text"
+                  id="alcohol"
+                  value={alcohol}
+                  onChange={(e) => setAlcohol(e.target.value)}
+                  placeholder="Enter alcohol name"
+                  required
+              />
 
-            <div className="createContainerForm get">
-            <form onSubmit={handleSearch}>
-                <div className="deleteIdRow">
-                <input
-                    type="text"
-                    id="alcohol"
-                    value={alcohol}
-                    onChange={(e) => setAlcohol(e.target.value)}
-                    placeholder="Enter alcohol name"
-                    required
-                />
-
-                <button type="submit">
-                    Find Cocktails
-                </button>
-                </div>
-            </form>
-            </div>
-        </div>
+              <button type="submit">
+                  Find Cocktails
+              </button>
+              </div>
+          </form>
+        </StyledCocktailForm>
 
         {message && (
-          <div className="deleteMessage">
+          <div>
             <p>{message}</p>
           </div>
         )}
 
         {cocktails.length > 0 && (
-          <div className="container">
+          <StyledCocktailCardContainer>
             {cocktails.map((cocktail) => (
-              <div className="card" key={cocktail.id}>
+              <StyledCocktailCard key={cocktail.id}>
                 <h3>ID: {cocktail.id}</h3>
 
-                <div className="cardInfo">
+                <div>
                   <h4>{cocktail.drinkName}</h4>
 
                   <img
-                    className="drinkImage"
                     src={cocktail.drinkImage}
                     alt={cocktail.drinkName}
                   />
@@ -102,11 +105,11 @@ function CocktailsByAlcohol() {
                     </a>
                   )}
                 </div>
-              </div>
+              </StyledCocktailCard>
             ))}
-          </div>
+          </StyledCocktailCardContainer>
         )}
-    </div>
+    </StyledCocktailContainer>
   );
 }
 
