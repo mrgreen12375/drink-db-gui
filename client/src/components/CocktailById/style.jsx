@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledCocktailContainer = styled.section`
+export const StyledCocktailContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

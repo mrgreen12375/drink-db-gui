@@ -1,25 +1,26 @@
 import styled from 'styled-components';
 
-export const StyledCreateCocktailContainer = styled.header`
+export const StyledCreateCocktailContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   coler: black;
+  margin-bottom: 50px;
 
- form {
+  form {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
- input,
- textarea {
+  input,
+  textarea {
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
   }
-  
+
   button {
     padding: 10px;
     cursor: pointer;
@@ -31,6 +32,10 @@ export const StyledCreateCocktailContainer = styled.header`
 
   button:hover {
     background-color: rgb(3, 181, 3);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
@@ -67,18 +72,17 @@ export const StyledCocktailCard = styled.div`
   font-size: 15px;
   padding: 20px;
 
-
- h3 {
+  h3 {
     margin: 0;
     text-align: start;
     width: 100%;
   }
 
- h4 {
+  h4 {
     margin: 5px;
   }
 
- h5 {
+  h5 {
     margin: 0;
   }
 
@@ -100,7 +104,7 @@ export const StyledCocktailCard = styled.div`
     border: 1px solid black;
     border-radius: 5px;
     margin-top: 5px;
-  } 
+  }
 
   a:hover {
     background-color: black;
