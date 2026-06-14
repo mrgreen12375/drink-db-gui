@@ -62,6 +62,20 @@ router.get("/alcohol/:drinkIngredient1", async (req, res) => {
   }
 });
 
+// get all cocktails alphabetically (A → Z)
+router.get("/alphabetical", async (req, res) => {
+  try {
+    const drinkData = await Cocktail.findAll({
+      order: [["drinkName", "ASC"]],
+    });
+
+    res.json(drinkData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // get one cocktail
 router.get("/:id", async (req, res) => {
   try {

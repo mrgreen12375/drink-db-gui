@@ -10,7 +10,7 @@ function Cocktails() {
   const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
-    fetch('/api/cocktails')
+    fetch('/api/cocktails/alphabetical')
       .then((res) => res.json())
       .then((data) => setDrinks(data));
   }, []);
