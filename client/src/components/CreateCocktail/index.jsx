@@ -1,5 +1,13 @@
 import { useState } from 'react';
 
+import {
+  StyledCreateCocktailContainer,
+  StyledCreateCocktailForm,
+  StyledIngredientForm,
+  StyledCocktailCardContainer,
+  StyledCocktailCard
+} from './style';
+
 function CreateCocktail() {
   const [createdDrink, setCreatedDrink] = useState(null);
 
@@ -76,10 +84,9 @@ function CreateCocktail() {
   };
 
   return (
-    <div className="createContainer">
-        <div className="createContainerForm">
+    <StyledCreateCocktailContainer>
+        <StyledCreateCocktailForm>
             <h2>Create a Cocktail</h2>
-
             <form onSubmit={handleSubmit}>
                 <input
                 type="text"
@@ -107,7 +114,7 @@ function CreateCocktail() {
                 />
 
                 {Array.from({ length: 7 }, (_, i) => (
-                <div key={i} className="ingredientRow">
+                <StyledIngredientForm key={i}>
                     <input
                     type="text"
                     name={`drinkMeasurement${i + 1}`}
@@ -123,7 +130,7 @@ function CreateCocktail() {
                     value={formData[`drinkIngredient${i + 1}`]}
                     onChange={handleChange}
                     />
-                </div>
+                </StyledIngredientForm>
                 ))}
 
                 <input
@@ -138,55 +145,49 @@ function CreateCocktail() {
                 Create Cocktail
                 </button>
             </form>
-        </div>
-        <div className="createdDrink">
-                {createdDrink && (
-            <div>        
-                <h2>Review</h2>        
-                <div className="card">
-                <h3>ID: {createdDrink.id}</h3>
+        </StyledCreateCocktailForm>
+        {createdDrink && (
+        <StyledCocktailCardContainer>        
+          <h2>Review</h2>        
+          <StyledCocktailCard>
+            <h3>ID: {createdDrink.id}</h3>
+              <h4>{createdDrink.drinkName}</h4>
 
-                <div className="cardInfo">
-                    <h4>{createdDrink.drinkName}</h4>
+              <img
+              src={createdDrink.drinkImage}
+              alt={createdDrink.drinkName}
+              />
 
-                    <img
-                    className="drinkImage"
-                    src={createdDrink.drinkImage}
-                    alt={createdDrink.drinkName}
-                    />
+              <p>{createdDrink.drinkInstructions}</p>
 
-                    <p>{createdDrink.drinkInstructions}</p>
+              {Array.from({ length: 7 }, (_, i) => {
+              const ingredient =
+                  createdDrink[`drinkIngredient${i + 1}`];
+              const measurement =
+                  createdDrink[`drinkMeasurement${i + 1}`];
 
-                    {Array.from({ length: 7 }, (_, i) => {
-                    const ingredient =
-                        createdDrink[`drinkIngredient${i + 1}`];
-                    const measurement =
-                        createdDrink[`drinkMeasurement${i + 1}`];
+              if (!ingredient) return null;
 
-                    if (!ingredient) return null;
+              return (
+                  <h5 key={i}>
+                  {measurement} : {ingredient}
+                  </h5>
+              );
+              })}
 
-                    return (
-                        <h5 key={i}>
-                        {measurement} : {ingredient}
-                        </h5>
-                    );
-                    })}
-
-                    {createdDrink.drinkVideo && (
-                    <a
-                        href={createdDrink.drinkVideo}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        Video
-                    </a>
-                    )}
-                </div>
-            </div>
-            </div>
+              {createdDrink.drinkVideo && (
+              <a
+                  href={createdDrink.drinkVideo}
+                  target="_blank"
+                  rel="noreferrer"
+              >
+                  Video
+              </a>
+              )}
+          </StyledCocktailCard>
+        </StyledCocktailCardContainer>
         )}
-        </div>
-    </div>
+    </StyledCreateCocktailContainer>
   );
 }
 

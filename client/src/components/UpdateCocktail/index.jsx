@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+import {
+  StyledUpdateCocktailContainer
+} from './style';
+
 function UpdateCocktail() {
   const [updatedDrink, setUpdatedDrink] = useState(null);
 
@@ -84,7 +88,7 @@ function UpdateCocktail() {
   };
 
   return (
-    <div className="createContainer">
+    <StyledUpdateCocktailContainer>
       <div className="createContainerForm update">
         <h2>Update Cocktail</h2>
 
@@ -212,7 +216,7 @@ function UpdateCocktail() {
           </div>
         )}
       </div>
-    </div>
+    </StyledUpdateCocktailContainer>
   );
 }
 
