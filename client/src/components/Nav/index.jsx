@@ -1,24 +1,37 @@
-import React from "react";
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import {
-    StyledNavContainer
-} from './style';
+import { StyledNavContainer } from './style';
 
 function Nav() {
-
-	return (
-        <StyledNavContainer>
-            <nav>
-                <ul>
-                    <li><Link id="getButton" to="/get">GET</Link></li>
-                    <li><Link id="postButton" to="/post">POST</Link></li>
-                    <li><Link id="putButton" to="/put">PUT</Link></li>
-                    <li><Link id="deleteButton" to="/delete">DELETE</Link></li>
-                </ul>
-            </nav>
-        </StyledNavContainer>
-	);
+  return (
+    <StyledNavContainer>
+      <nav>
+        <ul>
+          <li>
+            <Link id="getButton" to="/get">
+              GET
+            </Link>
+          </li>
+          <li>
+            <Link id="postButton" to="/post">
+              POST
+            </Link>
+          </li>
+          <li>
+            <Link id="putButton" to="/put">
+              PUT
+            </Link>
+          </li>
+          <li>
+            <Link id="deleteButton" to="/delete">
+              DELETE
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </StyledNavContainer>
+  );
 }
 
 export default Nav;

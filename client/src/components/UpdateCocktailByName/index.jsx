@@ -6,7 +6,7 @@ import {
   StyledNameForm,
   StyledIngredientForm,
   StyledCocktailCardContainer,
-  StyledCocktailCard
+  StyledCocktailCard,
 } from './style';
 
 function UpdateCocktailByName() {
@@ -70,16 +70,13 @@ function UpdateCocktailByName() {
     try {
       const { searchName, ...updateData } = formData;
 
-      const response = await fetch(
-        `/api/cocktails/name/${searchName}`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(updateData),
-        }
-      );
+      const response = await fetch(`/api/cocktails/name/${searchName}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateData),
+      });
 
       if (!response.ok) {
         throw new Error('Failed to update cocktail');
@@ -109,10 +106,7 @@ function UpdateCocktailByName() {
               required
             />
 
-            <button
-              type="button"
-              onClick={handleLoadCocktail}
-            >
+            <button type="button" onClick={handleLoadCocktail}>
               Load Cocktail
             </button>
           </StyledNameForm>
@@ -169,56 +163,49 @@ function UpdateCocktailByName() {
             onChange={handleChange}
           />
 
-          <button type="submit">
-            Update Cocktail
-          </button>
+          <button type="submit">Update Cocktail</button>
         </form>
       </StyledUpdateCocktailForm>
-        {updatedDrink && (
-          <StyledCocktailCardContainer>
-            <h2>Review</h2>
+      {updatedDrink && (
+        <StyledCocktailCardContainer>
+          <h2>Review</h2>
 
-            <StyledCocktailCard>
-              <h3>ID: {updatedDrink.id}</h3>
+          <StyledCocktailCard>
+            <h3>ID: {updatedDrink.id}</h3>
 
-              <div>
-                <h4>{updatedDrink.drinkName}</h4>
+            <div>
+              <h4>{updatedDrink.drinkName}</h4>
 
-                <img
-                  src={updatedDrink.drinkImage}
-                  alt={updatedDrink.drinkName}
-                />
+              <img src={updatedDrink.drinkImage} alt={updatedDrink.drinkName} />
 
-                <p>{updatedDrink.drinkInstructions}</p>
+              <p>{updatedDrink.drinkInstructions}</p>
 
-                {Array.from({ length: 7 }, (_, i) => {
-                  const ingredient =
-                    updatedDrink[`drinkIngredient${i + 1}`];
-                  const measurement =
-                    updatedDrink[`drinkMeasurement${i + 1}`];
+              {Array.from({ length: 7 }, (_, i) => {
+                const ingredient = updatedDrink[`drinkIngredient${i + 1}`];
+                const measurement = updatedDrink[`drinkMeasurement${i + 1}`];
 
-                  if (!ingredient) return null;
+                if (!ingredient) return null;
 
-                  return (
-                    <h5 key={i}>
-                      {measurement} : {ingredient}
-                    </h5>
-                  );
-                })}
+                return (
+                  <h5 key={i}>
+                    {measurement} : {ingredient}
+                  </h5>
+                );
+              })}
 
-                {updatedDrink.drinkVideo && (
-                  <a
-                    href={updatedDrink.drinkVideo}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Video
-                  </a>
-                )}
-              </div>
-            </StyledCocktailCard>
-          </StyledCocktailCardContainer>
-        )}
+              {updatedDrink.drinkVideo && (
+                <a
+                  href={updatedDrink.drinkVideo}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Video
+                </a>
+              )}
+            </div>
+          </StyledCocktailCard>
+        </StyledCocktailCardContainer>
+      )}
     </StyledUpdateCocktailContainer>
   );
 }

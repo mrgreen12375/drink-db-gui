@@ -1,9 +1,9 @@
-const router = require('express').Router();
-const { Op } = require('sequelize');
-const { Cocktail } = require('../../models');
+const router = require("express").Router();
+const { Op } = require("sequelize");
+const { Cocktail } = require("../../models");
 
 // get all cocktails
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const drinkData = await Cocktail.findAll();
 
@@ -15,19 +15,19 @@ router.get('/', async (req, res) => {
 });
 
 // get cocktail by drink name
-router.get('/name/:drinkName', async (req, res) => {
+router.get("/name/:drinkName", async (req, res) => {
   try {
     const drinkData = await Cocktail.findOne({
       where: {
         drinkName: {
-          [Op.iLike]: req.params.drinkName
-        }
-      }
+          [Op.iLike]: req.params.drinkName,
+        },
+      },
     });
 
     if (!drinkData) {
       return res.status(404).json({
-        message: 'No cocktail found with this name'
+        message: "No cocktail found with this name",
       });
     }
 
@@ -39,19 +39,19 @@ router.get('/name/:drinkName', async (req, res) => {
 });
 
 // get cocktail by alcohol name
-router.get('/alcohol/:drinkIngredient1', async (req, res) => {
+router.get("/alcohol/:drinkIngredient1", async (req, res) => {
   try {
     const drinkData = await Cocktail.findAll({
       where: {
         drinkIngredient1: {
-          [Op.iLike]: req.params.drinkIngredient1
-        }
-      }
+          [Op.iLike]: req.params.drinkIngredient1,
+        },
+      },
     });
 
     if (drinkData.length === 0) {
       return res.status(404).json({
-        message: 'No cocktails found with this alcohol'
+        message: "No cocktails found with this alcohol",
       });
     }
 
@@ -63,13 +63,13 @@ router.get('/alcohol/:drinkIngredient1', async (req, res) => {
 });
 
 // get one cocktail
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const drinkData = await Cocktail.findByPk(req.params.id);
 
     if (!drinkData) {
       return res.status(404).json({
-        message: 'No cocktail found with this id'
+        message: "No cocktail found with this id",
       });
     }
 
@@ -81,7 +81,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create a cocktail
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const drinkData = await Cocktail.create(req.body);
 
@@ -93,19 +93,19 @@ router.post('/', async (req, res) => {
 });
 
 // update a cocktail by name
-router.put('/name/:drinkName', async (req, res) => {
+router.put("/name/:drinkName", async (req, res) => {
   try {
     const cocktail = await Cocktail.findOne({
       where: {
         drinkName: {
-          [Op.iLike]: req.params.drinkName
-        }
-      }
+          [Op.iLike]: req.params.drinkName,
+        },
+      },
     });
 
     if (!cocktail) {
       return res.status(404).json({
-        message: 'No cocktail found with this name'
+        message: "No cocktail found with this name",
       });
     }
 
@@ -119,17 +119,17 @@ router.put('/name/:drinkName', async (req, res) => {
 });
 
 // update a cocktail
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const drinkData = await Cocktail.update(req.body, {
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     });
 
     if (!drinkData[0]) {
       return res.status(404).json({
-        message: 'No cocktail found with this id'
+        message: "No cocktail found with this id",
       });
     }
 
@@ -143,19 +143,19 @@ router.put('/:id', async (req, res) => {
 });
 
 // delete a cocktail by name
-router.delete('/name/:drinkName', async (req, res) => {
+router.delete("/name/:drinkName", async (req, res) => {
   try {
     const cocktail = await Cocktail.findOne({
       where: {
         drinkName: {
-          [Op.iLike]: req.params.drinkName
-        }
-      }
+          [Op.iLike]: req.params.drinkName,
+        },
+      },
     });
 
     if (!cocktail) {
       return res.status(404).json({
-        message: 'No cocktail found with this name'
+        message: "No cocktail found with this name",
       });
     }
 
@@ -165,7 +165,7 @@ router.delete('/name/:drinkName', async (req, res) => {
 
     res.json({
       message: `${drinkName} deleted successfully`,
-      drinkName
+      drinkName,
     });
   } catch (err) {
     console.log(err);
@@ -174,13 +174,13 @@ router.delete('/name/:drinkName', async (req, res) => {
 });
 
 // delete a cocktail
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const cocktail = await Cocktail.findByPk(req.params.id);
 
     if (!cocktail) {
       return res.status(404).json({
-        message: 'No cocktail found with this id'
+        message: "No cocktail found with this id",
       });
     }
 
@@ -190,7 +190,7 @@ router.delete('/:id', async (req, res) => {
 
     res.json({
       message: `${drinkName} deleted successfully`,
-      drinkName
+      drinkName,
     });
   } catch (err) {
     console.log(err);

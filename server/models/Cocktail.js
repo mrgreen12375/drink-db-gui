@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Cocktail extends Model {}
 
@@ -89,7 +89,7 @@ Cocktail.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'cocktail',
+    modelName: "cocktail",
   }
 );
 

@@ -5,7 +5,7 @@ import {
   StyledCreateCocktailForm,
   StyledIngredientForm,
   StyledCocktailCardContainer,
-  StyledCocktailCard
+  StyledCocktailCard,
 } from './style';
 
 function CreateCocktail() {
@@ -85,108 +85,101 @@ function CreateCocktail() {
 
   return (
     <StyledCreateCocktailContainer>
-        <StyledCreateCocktailForm>
-            <h2>Create a Cocktail</h2>
-            <form onSubmit={handleSubmit}>
-                <input
+      <StyledCreateCocktailForm>
+        <h2>Create a Cocktail</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="drinkName"
+            placeholder="Cocktail Name"
+            value={formData.drinkName}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="drinkImage"
+            placeholder="Image URL"
+            value={formData.drinkImage}
+            onChange={handleChange}
+          />
+
+          <textarea
+            name="drinkInstructions"
+            placeholder="Instructions"
+            value={formData.drinkInstructions}
+            onChange={handleChange}
+            rows="4"
+          />
+
+          {Array.from({ length: 7 }, (_, i) => (
+            <StyledIngredientForm key={i}>
+              <input
                 type="text"
-                name="drinkName"
-                placeholder="Cocktail Name"
-                value={formData.drinkName}
+                name={`drinkMeasurement${i + 1}`}
+                placeholder="Measurement"
+                value={formData[`drinkMeasurement${i + 1}`]}
                 onChange={handleChange}
-                required
-                />
-
-                <input
-                type="text"
-                name="drinkImage"
-                placeholder="Image URL"
-                value={formData.drinkImage}
-                onChange={handleChange}
-                />
-
-                <textarea
-                name="drinkInstructions"
-                placeholder="Instructions"
-                value={formData.drinkInstructions}
-                onChange={handleChange}
-                rows="4"
-                />
-
-                {Array.from({ length: 7 }, (_, i) => (
-                <StyledIngredientForm key={i}>
-                    <input
-                    type="text"
-                    name={`drinkMeasurement${i + 1}`}
-                    placeholder="Measurement"
-                    value={formData[`drinkMeasurement${i + 1}`]}
-                    onChange={handleChange}
-                    />
-
-                    <input
-                    type="text"
-                    name={`drinkIngredient${i + 1}`}
-                    placeholder="Ingredient"
-                    value={formData[`drinkIngredient${i + 1}`]}
-                    onChange={handleChange}
-                    />
-                </StyledIngredientForm>
-                ))}
-
-                <input
-                type="text"
-                name="drinkVideo"
-                placeholder="Video URL"
-                value={formData.drinkVideo}
-                onChange={handleChange}
-                />
-
-                <button type="submit">
-                Create Cocktail
-                </button>
-            </form>
-        </StyledCreateCocktailForm>
-        {createdDrink && (
-        <StyledCocktailCardContainer>        
-          <h2>Review</h2>        
-          <StyledCocktailCard>
-            <h3>ID: {createdDrink.id}</h3>
-              <h4>{createdDrink.drinkName}</h4>
-
-              <img
-              src={createdDrink.drinkImage}
-              alt={createdDrink.drinkName}
               />
 
-              <p>{createdDrink.drinkInstructions}</p>
+              <input
+                type="text"
+                name={`drinkIngredient${i + 1}`}
+                placeholder="Ingredient"
+                value={formData[`drinkIngredient${i + 1}`]}
+                onChange={handleChange}
+              />
+            </StyledIngredientForm>
+          ))}
 
-              {Array.from({ length: 7 }, (_, i) => {
-              const ingredient =
-                  createdDrink[`drinkIngredient${i + 1}`];
-              const measurement =
-                  createdDrink[`drinkMeasurement${i + 1}`];
+          <input
+            type="text"
+            name="drinkVideo"
+            placeholder="Video URL"
+            value={formData.drinkVideo}
+            onChange={handleChange}
+          />
+
+          <button type="submit">Create Cocktail</button>
+        </form>
+      </StyledCreateCocktailForm>
+      {createdDrink && (
+        <StyledCocktailCardContainer>
+          <h2>Review</h2>
+          <StyledCocktailCard>
+            <h3>ID: {createdDrink.id}</h3>
+            <h4>{createdDrink.drinkName}</h4>
+
+            <img src={createdDrink.drinkImage} alt={createdDrink.drinkName} />
+
+            <p>{createdDrink.drinkInstructions}</p>
+
+            {Array.from({ length: 7 }, (_, i) => {
+              const ingredient = createdDrink[`drinkIngredient${i + 1}`];
+              const measurement = createdDrink[`drinkMeasurement${i + 1}`];
 
               if (!ingredient) return null;
 
               return (
-                  <h5 key={i}>
+                <h5 key={i}>
                   {measurement} : {ingredient}
-                  </h5>
+                </h5>
               );
-              })}
+            })}
 
-              {createdDrink.drinkVideo && (
+            {createdDrink.drinkVideo && (
               <a
-                  href={createdDrink.drinkVideo}
-                  target="_blank"
-                  rel="noreferrer"
+                href={createdDrink.drinkVideo}
+                target="_blank"
+                rel="noreferrer"
               >
-                  Video
+                Video
               </a>
-              )}
+            )}
           </StyledCocktailCard>
         </StyledCocktailCardContainer>
-        )}
+      )}
     </StyledCreateCocktailContainer>
   );
 }

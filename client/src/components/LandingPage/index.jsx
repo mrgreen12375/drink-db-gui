@@ -1,8 +1,6 @@
 import landingImage from '../../assets/landing.png';
 
-import {
-  StyledLandingContainer
-} from './style';
+import { StyledLandingContainer } from './style';
 
 function Landing() {
   return (

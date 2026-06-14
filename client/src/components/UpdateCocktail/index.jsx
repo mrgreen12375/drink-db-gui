@@ -6,7 +6,7 @@ import {
   StyledIdForm,
   StyledIngredientForm,
   StyledCocktailCardContainer,
-  StyledCocktailCard
+  StyledCocktailCard,
 } from './style';
 
 function UpdateCocktail() {
@@ -82,7 +82,7 @@ function UpdateCocktail() {
       console.log('before json');
 
       const data = await response.json();
-      
+
       console.log('after json');
       console.log(data);
 
@@ -108,10 +108,7 @@ function UpdateCocktail() {
               required
             />
 
-            <button
-              type="button"
-              onClick={handleLoadCocktail}
-            >
+            <button type="button" onClick={handleLoadCocktail}>
               Load Cocktail
             </button>
           </StyledIdForm>
@@ -168,55 +165,48 @@ function UpdateCocktail() {
             onChange={handleChange}
           />
 
-          <button type="submit">
-            Update Cocktail
-          </button>
+          <button type="submit">Update Cocktail</button>
         </form>
       </StyledUpdateCocktailForm>
-        {updatedDrink && (
-          <StyledCocktailCardContainer>
-            <h2>Review</h2>
-            <StyledCocktailCard>
-              <h3>ID: {updatedDrink.id}</h3>
+      {updatedDrink && (
+        <StyledCocktailCardContainer>
+          <h2>Review</h2>
+          <StyledCocktailCard>
+            <h3>ID: {updatedDrink.id}</h3>
 
-              <div>
-                <h4>{updatedDrink.drinkName}</h4>
+            <div>
+              <h4>{updatedDrink.drinkName}</h4>
 
-                <img
-                  src={updatedDrink.drinkImage}
-                  alt={updatedDrink.drinkName}
-                />
+              <img src={updatedDrink.drinkImage} alt={updatedDrink.drinkName} />
 
-                <p>{updatedDrink.drinkInstructions}</p>
+              <p>{updatedDrink.drinkInstructions}</p>
 
-                {Array.from({ length: 7 }, (_, i) => {
-                  const ingredient =
-                    updatedDrink[`drinkIngredient${i + 1}`];
-                  const measurement =
-                    updatedDrink[`drinkMeasurement${i + 1}`];
+              {Array.from({ length: 7 }, (_, i) => {
+                const ingredient = updatedDrink[`drinkIngredient${i + 1}`];
+                const measurement = updatedDrink[`drinkMeasurement${i + 1}`];
 
-                  if (!ingredient) return null;
+                if (!ingredient) return null;
 
-                  return (
-                    <h5 key={i}>
-                      {measurement} : {ingredient}
-                    </h5>
-                  );
-                })}
+                return (
+                  <h5 key={i}>
+                    {measurement} : {ingredient}
+                  </h5>
+                );
+              })}
 
-                {updatedDrink.drinkVideo && (
-                  <a
-                    href={updatedDrink.drinkVideo}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Video
-                  </a>
-                )}
-              </div>
-            </StyledCocktailCard>
-          </StyledCocktailCardContainer>
-        )}
+              {updatedDrink.drinkVideo && (
+                <a
+                  href={updatedDrink.drinkVideo}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Video
+                </a>
+              )}
+            </div>
+          </StyledCocktailCard>
+        </StyledCocktailCardContainer>
+      )}
     </StyledUpdateCocktailContainer>
   );
 }

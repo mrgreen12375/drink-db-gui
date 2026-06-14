@@ -4,7 +4,7 @@ import {
   StyledCocktailContainer,
   StyledCocktailForm,
   StyledCocktailCardContainer,
-  StyledCocktailCard
+  StyledCocktailCard,
 } from './style';
 
 function CocktailsByAlcohol() {
@@ -38,77 +38,70 @@ function CocktailsByAlcohol() {
 
   return (
     <StyledCocktailContainer>
-        <h2>Find Cocktails</h2>
-        <StyledCocktailForm>
-          <form onSubmit={handleSearch}>
-              <div className="deleteIdRow">
-              <input
-                  type="text"
-                  id="alcohol"
-                  value={alcohol}
-                  onChange={(e) => setAlcohol(e.target.value)}
-                  placeholder="Enter alcohol name"
-                  required
-              />
+      <h2>Find Cocktails</h2>
+      <StyledCocktailForm>
+        <form onSubmit={handleSearch}>
+          <div className="deleteIdRow">
+            <input
+              type="text"
+              id="alcohol"
+              value={alcohol}
+              onChange={(e) => setAlcohol(e.target.value)}
+              placeholder="Enter alcohol name"
+              required
+            />
 
-              <button type="submit">
-                  Find Cocktails
-              </button>
-              </div>
-          </form>
-        </StyledCocktailForm>
-
-        {message && (
-          <div>
-            <p>{message}</p>
+            <button type="submit">Find Cocktails</button>
           </div>
-        )}
+        </form>
+      </StyledCocktailForm>
 
-        {cocktails.length > 0 && (
-          <StyledCocktailCardContainer>
-            {cocktails.map((cocktail) => (
-              <StyledCocktailCard key={cocktail.id}>
-                <h3>ID: {cocktail.id}</h3>
+      {message && (
+        <div>
+          <p>{message}</p>
+        </div>
+      )}
 
-                <div>
-                  <h4>{cocktail.drinkName}</h4>
+      {cocktails.length > 0 && (
+        <StyledCocktailCardContainer>
+          {cocktails.map((cocktail) => (
+            <StyledCocktailCard key={cocktail.id}>
+              <h3>ID: {cocktail.id}</h3>
 
-                  <img
-                    src={cocktail.drinkImage}
-                    alt={cocktail.drinkName}
-                  />
+              <div>
+                <h4>{cocktail.drinkName}</h4>
 
-                  <p>{cocktail.drinkInstructions}</p>
+                <img src={cocktail.drinkImage} alt={cocktail.drinkName} />
 
-                  {Array.from({ length: 15 }, (_, i) => {
-                    const ingredient =
-                      cocktail[`drinkIngredient${i + 1}`];
-                    const measurement =
-                      cocktail[`drinkMeasurement${i + 1}`];
+                <p>{cocktail.drinkInstructions}</p>
 
-                    if (!ingredient) return null;
+                {Array.from({ length: 15 }, (_, i) => {
+                  const ingredient = cocktail[`drinkIngredient${i + 1}`];
+                  const measurement = cocktail[`drinkMeasurement${i + 1}`];
 
-                    return (
-                      <h5 key={i}>
-                        {measurement} : {ingredient}
-                      </h5>
-                    );
-                  })}
+                  if (!ingredient) return null;
 
-                  {cocktail.drinkVideo && (
-                    <a
-                      href={cocktail.drinkVideo}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Video
-                    </a>
-                  )}
-                </div>
-              </StyledCocktailCard>
-            ))}
-          </StyledCocktailCardContainer>
-        )}
+                  return (
+                    <h5 key={i}>
+                      {measurement} : {ingredient}
+                    </h5>
+                  );
+                })}
+
+                {cocktail.drinkVideo && (
+                  <a
+                    href={cocktail.drinkVideo}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Video
+                  </a>
+                )}
+              </div>
+            </StyledCocktailCard>
+          ))}
+        </StyledCocktailCardContainer>
+      )}
     </StyledCocktailContainer>
   );
 }

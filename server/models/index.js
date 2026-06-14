@@ -1,8 +1,8 @@
-const Cocktail = require('./Cocktail');
+const Cocktail = require("./Cocktail");
 
 Cocktail.hasMany(Cocktail, {
-  foreignKey: 'id',
-  onDelete: 'CASCADE',
+  foreignKey: "id",
+  onDelete: "CASCADE",
 });
 
-module.exports = {Cocktail};
+module.exports = { Cocktail };

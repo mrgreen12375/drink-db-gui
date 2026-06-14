@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import {
   StyledContainer,
   StyledCocktailContainer,
-  StyledCocktailCard
+  StyledCocktailCard,
 } from './style';
 
 function Cocktails() {
@@ -11,15 +11,15 @@ function Cocktails() {
 
   useEffect(() => {
     fetch('/api/cocktails')
-      .then(res => res.json())
-      .then(data => setDrinks(data));
+      .then((res) => res.json())
+      .then((data) => setDrinks(data));
   }, []);
 
   return (
     <StyledContainer>
       <h2>All Cocktails</h2>
       <StyledCocktailContainer>
-        {drinks.map(drink => (
+        {drinks.map((drink) => (
           <StyledCocktailCard key={drink.id}>
             <h3>ID: {drink.id}</h3>
             <div>
@@ -34,14 +34,18 @@ function Cocktails() {
                 if (!ingredient) return null;
 
                 return (
-                  <h5 key={i}>{measurement} : {ingredient}</h5>
+                  <h5 key={i}>
+                    {measurement} : {ingredient}
+                  </h5>
                 );
               })}
 
-              <a href= {drink.drinkVideo} target='blank'>Video</a>
+              <a href={drink.drinkVideo} target="blank">
+                Video
+              </a>
             </div>
           </StyledCocktailCard>
-      ))}
+        ))}
       </StyledCocktailContainer>
     </StyledContainer>
   );
