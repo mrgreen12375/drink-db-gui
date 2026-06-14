@@ -26,6 +26,7 @@ export const StyledCreateCocktailContainer = styled.header`
     color: white;
     background-color: green;
     font-weight: bold;
+    border-radius: 5px;
   }
 
   button:hover {

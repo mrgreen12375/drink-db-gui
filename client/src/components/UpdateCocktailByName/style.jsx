@@ -59,7 +59,7 @@ export const StyledUpdateCocktailForm = styled.div`
   }
 `;
 
-export const StyledIdForm = styled.div`
+export const StyledNameForm = styled.div`
   display: flex;
   justify-content: space-around;
   gap: 10px;

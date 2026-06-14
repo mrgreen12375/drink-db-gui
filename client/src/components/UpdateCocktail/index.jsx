@@ -1,7 +1,12 @@
 import { useState } from 'react';
 
 import {
-  StyledUpdateCocktailContainer
+  StyledUpdateCocktailContainer,
+  StyledUpdateCocktailForm,
+  StyledIdForm,
+  StyledIngredientForm,
+  StyledCocktailCardContainer,
+  StyledCocktailCard
 } from './style';
 
 function UpdateCocktail() {
@@ -89,11 +94,11 @@ function UpdateCocktail() {
 
   return (
     <StyledUpdateCocktailContainer>
-      <div className="createContainerForm update">
+      <StyledUpdateCocktailForm>
         <h2>Update Cocktail</h2>
 
         <form onSubmit={handleSubmit}>
-          <div className="idRow">
+          <StyledIdForm>
             <input
               type="number"
               name="id"
@@ -109,7 +114,7 @@ function UpdateCocktail() {
             >
               Load Cocktail
             </button>
-          </div>
+          </StyledIdForm>
 
           <input
             type="text"
@@ -136,7 +141,7 @@ function UpdateCocktail() {
           />
 
           {Array.from({ length: 7 }, (_, i) => (
-            <div key={i} className="ingredientRow">
+            <StyledIngredientForm key={i}>
               <input
                 type="text"
                 name={`drinkMeasurement${i + 1}`}
@@ -152,7 +157,7 @@ function UpdateCocktail() {
                 value={formData[`drinkIngredient${i + 1}`]}
                 onChange={handleChange}
               />
-            </div>
+            </StyledIngredientForm>
           ))}
 
           <input
@@ -167,20 +172,17 @@ function UpdateCocktail() {
             Update Cocktail
           </button>
         </form>
-      </div>
-
-      <div className="createdDrink">
+      </StyledUpdateCocktailForm>
         {updatedDrink && (
-          <div>
+          <StyledCocktailCardContainer>
             <h2>Review</h2>
-            <div className="card">
+            <StyledCocktailCard>
               <h3>ID: {updatedDrink.id}</h3>
 
-              <div className="cardInfo">
+              <div>
                 <h4>{updatedDrink.drinkName}</h4>
 
                 <img
-                  className="drinkImage"
                   src={updatedDrink.drinkImage}
                   alt={updatedDrink.drinkName}
                 />
@@ -212,10 +214,9 @@ function UpdateCocktail() {
                   </a>
                 )}
               </div>
-            </div>
-          </div>
+            </StyledCocktailCard>
+          </StyledCocktailCardContainer>
         )}
-      </div>
     </StyledUpdateCocktailContainer>
   );
 }
