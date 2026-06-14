@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledUpdateCocktailContainer = styled.header`
+export const StyledUpdateCocktailContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -26,6 +26,7 @@ export const StyledUpdateCocktailContainer = styled.header`
     color: white;
     background-color: orange;
     font-weight: bold;
+    border: 1px solid black;
   }
 
   button:hover {
@@ -63,7 +64,7 @@ export const StyledIdForm = styled.div`
   display: flex;
   justify-content: space-around;
   gap: 10px;
-  border: 1px solid black;
+  border: 2px dashed black;
   border-radius: 5px;
   padding: 10px 0px;
 `;

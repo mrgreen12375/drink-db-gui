@@ -7,6 +7,10 @@ export const StyledCocktailContainer = styled.section`
   align-items: center;
   color: black;
 
+  h2 {
+    margin: 25px 0px 0px 0px;
+  }
+
   input,
   textarea {
     padding: 10px;

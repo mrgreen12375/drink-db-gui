@@ -13,7 +13,7 @@ export const StyledCocktailContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   color: white;
-  margin: 20px 50px;
+  margin: 40px;
   gap: 30px;
 `;
 

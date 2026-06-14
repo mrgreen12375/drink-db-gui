@@ -6,6 +6,10 @@ export const StyledDeleteContainer = styled.div`
   justify-content: center;
   align-items: center;
   color: black;
+
+  h2 {
+    margin: 25px 0px 0px 0px;
+  }
 `;
 
 export const StyledDeleteForm = styled.div`

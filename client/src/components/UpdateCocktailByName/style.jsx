@@ -26,6 +26,7 @@ export const StyledUpdateCocktailContainer = styled.header`
     color: white;
     background-color: orange;
     font-weight: bold;
+    border: 1px solid black;
   }
 
   button:hover {
@@ -63,7 +64,7 @@ export const StyledNameForm = styled.div`
   display: flex;
   justify-content: space-around;
   gap: 10px;
-  border: 1px solid black;
+  border: 2px dashed black;
   border-radius: 5px;
   padding: 10px 0px;
 `;
