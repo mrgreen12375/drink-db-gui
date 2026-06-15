@@ -1,15 +1,17 @@
 {
-    "name": "drink-db-gui",
-    "version": "1.0.0",
-    "private": true,
-    "scripts": {
-        "client": "cd client && npm run dev",
-        "server": "cd server && node server.js",
-        "dev": "concurrently \"npm run server\" \"npm run client\"",
-        "install": "cd server && npm i && cd ../client && npm i",
-        "seed": "cd server && npm run seed"
-    },
-    "devDependencies": {
-        "concurrently": "^9.0.0"
-    }
+  "name": "drink-db-gui",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server/server.js",
+    "client": "cd client && npm run dev",
+    "server": "cd server && node server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install": "cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm install && npm run build",
+    "seed": "cd server && npm run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
 }
