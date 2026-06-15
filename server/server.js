@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // API ROUTES
-app.use("/api", routes);
+app.use(routes);
 
 // SERVE REACT BUILD
 app.use(express.static(path.join(__dirname, "../client/dist")));

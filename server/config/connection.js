@@ -19,9 +19,6 @@ const sequelize = process.env.DATABASE_URL
       {
         host: "localhost",
         dialect: "postgres",
-        dialectOptions: {
-          decimalNumbers: true,
-        },
       }
     );
 
