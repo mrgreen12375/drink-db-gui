@@ -39,7 +39,6 @@ export const StyledUpdateCocktailContainer = styled.div`
 
     input,
     textarea {
-      width: 100%;
       padding: 5px 0px 5px 0px;
       text-align: center;
     }
