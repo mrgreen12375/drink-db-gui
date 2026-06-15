@@ -36,6 +36,12 @@ export const StyledCreateCocktailContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+
+    input,
+    textarea {
+      padding: 5px 0px 5px 0px;
+      text-align: center;
+    }
   }
 `;
 
@@ -49,6 +55,10 @@ export const StyledCreateCocktailForm = styled.div`
 
   h2 {
     margin-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
   }
 `;
 
