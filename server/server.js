@@ -9,18 +9,26 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// API ROUTES
-app.use(routes);
+// --------------------
+// 1. API ROUTES FIRST
+// --------------------
+app.use("/", routes);
 
-// SERVE REACT BUILD
+// --------------------
+// 2. SERVE REACT BUILD
+// --------------------
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// SPA FALLBACK (CRITICAL)
+// --------------------
+// 3. SPA FALLBACK LAST
+// --------------------
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
 });
 
-// DB + SERVER START
+// --------------------
+// DB + SERVER
+// --------------------
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
