@@ -33,16 +33,6 @@ export const StyledUpdateCocktailContainer = styled.div`
   button:hover {
     background-color: rgb(255, 192, 74);
   }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-
-    input,
-    textarea {
-      padding: 5px 0px 5px 0px;
-      text-align: center;
-    }
-  }
 `;
 
 export const StyledUpdateCocktailForm = styled.div`
@@ -68,6 +58,16 @@ export const StyledUpdateCocktailForm = styled.div`
 
   button:hover {
     background-color: rgb(255, 192, 74);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    input,
+    textarea {
+      padding: 5px 0px 5px 0px;
+      text-align: center;
+    }
   }
 `;
 
