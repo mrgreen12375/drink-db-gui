@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 // --------------------
 // 1. API ROUTES FIRST
 // --------------------
-app.use("/", routes);
+app.use("/api", routes);
 
 // --------------------
 // 2. SERVE REACT BUILD
