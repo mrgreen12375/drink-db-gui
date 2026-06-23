@@ -28,6 +28,7 @@ export const StyledUpdateCocktailContainer = styled.div`
     background-color: orange;
     font-weight: bold;
     border: 1px solid black;
+    border-radius: 5px;
   }
 
   button:hover {
@@ -70,6 +71,12 @@ export const StyledIdForm = styled.div`
   border: 2px dashed black;
   border-radius: 5px;
   padding: 10px 0px;
+
+  @media (max-width: 768px) {
+    input {
+      width: 200px;
+    }
+  }
 `;
 
 export const StyledIngredientForm = styled.div`
