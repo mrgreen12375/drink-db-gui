@@ -28,10 +28,22 @@ export const StyledUpdateCocktailContainer = styled.div`
     background-color: orange;
     font-weight: bold;
     border: 1px solid black;
+    border-radius: 5px;
   }
 
   button:hover {
     background-color: rgb(255, 192, 74);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 5px 0px 5px 0px;
+      text-align: center;
+    }
   }
 `;
 
@@ -47,27 +59,8 @@ export const StyledUpdateCocktailForm = styled.div`
     margin-top: 0;
   }
 
-  button {
-    padding: 10px;
-    cursor: pointer;
-    color: white;
-    background-color: orange;
-    font-weight: bold;
-    border-radius: 5px;
-  }
-
-  button:hover {
-    background-color: rgb(255, 192, 74);
-  }
-
   @media (max-width: 768px) {
-    flex-direction: column;
-
-    input,
-    textarea {
-      padding: 5px 0px 5px 0px;
-      text-align: center;
-    }
+    width: 80%;
   }
 `;
 
@@ -78,6 +71,12 @@ export const StyledNameForm = styled.div`
   border: 2px dashed black;
   border-radius: 5px;
   padding: 10px 0px;
+
+  @media (max-width: 768px) {
+    input {
+      width: 180px;
+    }
+  }
 `;
 
 export const StyledIngredientForm = styled.div`
