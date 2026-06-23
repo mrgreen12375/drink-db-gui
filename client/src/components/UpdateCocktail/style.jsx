@@ -57,27 +57,8 @@ export const StyledUpdateCocktailForm = styled.div`
     margin-top: 0;
   }
 
-  button {
-    padding: 10px;
-    cursor: pointer;
-    color: white;
-    background-color: orange;
-    font-weight: bold;
-    border-radius: 5px;
-  }
-
-  button:hover {
-    background-color: rgb(255, 192, 74);
-  }
-
   @media (max-width: 768px) {
-    flex-direction: column;
-
-    input,
-    textarea {
-      padding: 5px 0px 5px 0px;
-      text-align: center;
-    }
+    width: 80%;
   }
 `;
 
